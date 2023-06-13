@@ -10,7 +10,7 @@ const connectdb = require('./db/connect')
 app.use(express.json())
 
 //route
-app.use('/api/v1/items',tasks)
+app.use('/api/v1/jwt',tasks)
 
 const port = process.env.port || 3000
 
