@@ -13,20 +13,8 @@ const user = async (req,res) =>{
 }
 
 const info = async (req,res) =>{
-    const decode = req.headers.authorization
-    if(!decode || !decode.startsWith('Bearer ')){
-        res.status(401).json({msg : 'Not Authorized'})
-    }
-    const code = decode.split(' ')[1]
-    console.log(code)
-
-    try {
-        const decoded = jwt.verify(code,process.env.jwt_key)
-        const {name} = decoded
-        res.status(200).json({username : `${name}`})
-    } catch (error) {
-        res.status(401).json({msg : 'Bad token'})
-    }
+    res.status(200).json({username : `${req.user.name}`})
+    
 }
 
 module.exports = {info,user}
